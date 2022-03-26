@@ -105,7 +105,7 @@ class LandingPage extends StatelessWidget {
         child: Column(
           children: const [
             Navbar(),
-            Expanded(child: LandingPageBody()),
+            LandingPageBody(),
           ],
         ),
       ),

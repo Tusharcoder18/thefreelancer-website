@@ -37,13 +37,20 @@ class DesktopNavbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          'TheFreelancers',
-          style: Theme.of(context).textTheme.headlineLarge,
+        SizedBox(width: screenWidth * 0.05),
+        Column(
+          children: [
+            Text(
+              'PRANA',
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+            const Text("The Freelancing Nerds!"),
+          ],
         ),
+        SizedBox(width: screenWidth * 0.6),
         Row(
           children: [
             Text(
@@ -53,11 +60,6 @@ class DesktopNavbar extends StatelessWidget {
             const SizedBox(width: 30),
             Text(
               'About Us',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            const SizedBox(width: 30),
-            Text(
-              'Pricing',
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(width: 30),
@@ -75,7 +77,6 @@ class DesktopNavbar extends StatelessWidget {
               ),
               color: Colors.white,
             ),
-            const SizedBox(width: 30),
           ],
         ),
       ],

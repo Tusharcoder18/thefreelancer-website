@@ -1,40 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:freelanceapp/LandingPage/about_us.dart';
-import 'package:freelanceapp/LandingPage/intro.dart';
 
-class LandingPageBody extends StatelessWidget {
-  const LandingPageBody({Key? key}) : super(key: key);
+class Intro extends StatelessWidget {
+  const Intro({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    return LayoutBuilder(builder: ((context, constraints) {
-      if (constraints.maxWidth >= 1200) {
-        return SizedBox(
-          height: screenHeight * 0.875,
-          child: ListView(
-            // shrinkWrap: true,
-            children: const [
-              Intro(),
-              AboutUs(),
-            ],
+    return SizedBox(
+      height: screenHeight * 0.875,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: screenWidth * 0.1,
           ),
-        );
-      } else {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            landingPageBodyText(context, screenWidth, screenHeight),
-            Expanded(child: Image.asset('assets/images/developer.png')),
-          ],
-        );
-      }
-    }));
+          introBodyText(context, screenWidth, screenHeight),
+          Image.asset(
+            'assets/images/developer.png',
+            height: screenWidth * 0.5,
+            width: screenWidth * 0.5,
+          ),
+        ],
+      ),
+    );
   }
 }
 
-Widget landingPageBodyText(BuildContext context, double width, double height) {
+Widget introBodyText(BuildContext context, double width, double height) {
   TextStyle? displayStyle = width > 1200
       ? Theme.of(context).textTheme.displayLarge
       : Theme.of(context).textTheme.displayMedium;
@@ -51,7 +44,6 @@ Widget landingPageBodyText(BuildContext context, double width, double height) {
       SizedBox(
         height: height * 0.2,
       ),
-      // विचार असलियत
       Text(
         'Convert your IDEA \ninto REALITY',
         style: displayStyle,
