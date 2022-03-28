@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:freelanceapp/auto_scroll.dart';
+import 'package:provider/provider.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({Key? key}) : super(key: key);
@@ -38,7 +40,9 @@ class DesktopNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(width: screenWidth * 0.05),
         Column(
@@ -50,21 +54,33 @@ class DesktopNavbar extends StatelessWidget {
             const Text("The Freelancing Nerds!"),
           ],
         ),
-        SizedBox(width: screenWidth * 0.6),
+        SizedBox(width: screenWidth * 0.5),
         Row(
           children: [
-            Text(
-              'Home',
-              style: Theme.of(context).textTheme.titleLarge,
+            GestureDetector(
+              onTap: () {
+                context.read<AutoScroll>().scrollTo(1);
+              },
+              child: Text(
+                'Home',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
             ),
             const SizedBox(width: 30),
-            Text(
-              'About Us',
-              style: Theme.of(context).textTheme.titleLarge,
+            GestureDetector(
+              onTap: () {
+                context.read<AutoScroll>().scrollTo(screenHeight * 0.875);
+              },
+              child: Text(
+                'About Us',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
             ),
             const SizedBox(width: 30),
             MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                context.read<AutoScroll>().scrollTo((screenHeight * 0.875) * 2);
+              },
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
               ),

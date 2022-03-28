@@ -9,27 +9,23 @@ class AboutUs extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    return SizedBox(
+    return Container(
+      color: Colors.grey.withOpacity(0.35),
       height: screenHeight * 0.875,
-      child: Stack(children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: screenWidth * 0.1,
-            ),
-            Image.asset(
-              'assets/images/aboutus.png',
-              height: screenWidth * 0.5,
-              width: screenWidth * 0.5,
-            ),
-            aboutUsBodyText(context, screenWidth, screenHeight),
-          ],
-        ),
-        BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 3, sigmaY: 4),
-        ),
-      ]),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: screenWidth * 0.1,
+          ),
+          Image.asset(
+            'assets/images/aboutus.png',
+            height: screenWidth * 0.5,
+            width: screenWidth * 0.5,
+          ),
+          Expanded(child: aboutUsBodyText(context, screenWidth, screenHeight)),
+        ],
+      ),
     );
   }
 }
@@ -56,7 +52,7 @@ Widget aboutUsBodyText(BuildContext context, double width, double height) {
         height: 12,
       ),
       Text(
-        "We are Avengers (of developer 😎)",
+        "We are Avengers of freeelance developers 😎. Just Kidding. \nWe are a team of young enthusiastic professional nerds who are experts in Flutter Application Devlopment. So let us know your requirements and we will create it for you in no time!",
         style: bodyStyle,
       ),
     ],

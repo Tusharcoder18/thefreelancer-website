@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../auto_scroll.dart';
 
 class Intro extends StatelessWidget {
   const Intro({Key? key}) : super(key: key);
@@ -16,10 +19,12 @@ class Intro extends StatelessWidget {
             width: screenWidth * 0.1,
           ),
           introBodyText(context, screenWidth, screenHeight),
-          Image.asset(
-            'assets/images/developer.png',
-            height: screenWidth * 0.5,
-            width: screenWidth * 0.5,
+          Expanded(
+            child: Image.asset(
+              'assets/images/developer.png',
+              // height: screenWidth * 0.5,
+              // width: screenWidth * 0.5,
+            ),
           ),
         ],
       ),
@@ -28,6 +33,7 @@ class Intro extends StatelessWidget {
 }
 
 Widget introBodyText(BuildContext context, double width, double height) {
+  final screenHeight = MediaQuery.of(context).size.height;
   TextStyle? displayStyle = width > 1200
       ? Theme.of(context).textTheme.displayLarge
       : Theme.of(context).textTheme.displayMedium;
@@ -59,14 +65,16 @@ Widget introBodyText(BuildContext context, double width, double height) {
         height: 20,
       ),
       MaterialButton(
-        onPressed: () {},
+        onPressed: () {
+          context.read<AutoScroll>().scrollTo((screenHeight * 0.875) * 2);
+        },
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(30)),
         ),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Text(
-            'Contact Us',
+            'Let\'s do it!',
             style: labelStyle,
           ),
         ),
