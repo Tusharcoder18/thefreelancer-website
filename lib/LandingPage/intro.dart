@@ -32,17 +32,77 @@ class Intro extends StatelessWidget {
   }
 }
 
+class IntroMobile extends StatelessWidget {
+  const IntroMobile({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+    return SizedBox(
+      height: screenHeight * 0.8,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Convert your IDEA \ninto REALITY',
+                  style: Theme.of(context).textTheme.displayMedium,
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                SizedBox(
+                  width: screenWidth * 0.8,
+                  child: Text(
+                    'We are a team of nerds who can develop your application for any platform \navailable right now! It\'s called hybrid applications btw.',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                MaterialButton(
+                  onPressed: () {
+                    context
+                        .read<AutoScroll>()
+                        .scrollTo((screenHeight * 0.875) * 2);
+                  },
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text(
+                      'Let\'s talk!',
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
+                  ),
+                  color: Colors.white,
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Image.asset(
+              'assets/images/developer.png',
+              // height: screenWidth,
+              // width: screenWidth,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 Widget introBodyText(BuildContext context, double width, double height) {
   final screenHeight = MediaQuery.of(context).size.height;
-  TextStyle? displayStyle = width > 1200
-      ? Theme.of(context).textTheme.displayLarge
-      : Theme.of(context).textTheme.displayMedium;
-  TextStyle? bodyStyle = width > 1200
-      ? Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 18)
-      : Theme.of(context).textTheme.bodyMedium;
-  TextStyle? labelStyle = width > 1200
-      ? Theme.of(context).textTheme.labelLarge
-      : Theme.of(context).textTheme.labelMedium;
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     // mainAxisAlignment: MainAxisAlignment.center,
@@ -52,14 +112,14 @@ Widget introBodyText(BuildContext context, double width, double height) {
       ),
       Text(
         'Convert your IDEA \ninto REALITY',
-        style: displayStyle,
+        style: Theme.of(context).textTheme.displayLarge,
       ),
       const SizedBox(
         height: 12,
       ),
       Text(
         'We are a team of nerds who can develop your application for any platform \navailable right now! It\'s called hybrid applications btw.',
-        style: bodyStyle,
+        style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 18),
       ),
       const SizedBox(
         height: 20,
@@ -74,8 +134,8 @@ Widget introBodyText(BuildContext context, double width, double height) {
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Text(
-            'Let\'s do it!',
-            style: labelStyle,
+            'Let\'s talk!',
+            style: Theme.of(context).textTheme.labelLarge,
           ),
         ),
         color: Colors.white,

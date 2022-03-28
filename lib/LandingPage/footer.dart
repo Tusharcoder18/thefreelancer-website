@@ -11,7 +11,7 @@ class Footer extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     return Container(
       color: Colors.black,
-      height: screenHeight * 0.2,
+      height: screenHeight * 0.15,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,

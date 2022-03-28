@@ -105,47 +105,53 @@ class MobileNavbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
     return Column(
       children: [
         Row(),
-        Text(
-          'TheFreelancers',
-          style: Theme.of(context).textTheme.headlineMedium,
+        Column(
+          children: [
+            Text(
+              'PRANA',
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+            const Text("The Freelancing Nerds!"),
+          ],
         ),
         const SizedBox(height: 15),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Home',
-              style: Theme.of(context).textTheme.titleMedium,
+            GestureDetector(
+              onTap: () {
+                context.read<AutoScroll>().scrollTo(1);
+              },
+              child: Text(
+                'Home',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
             ),
             const SizedBox(width: 15),
-            Text(
-              'About Us',
-              style: Theme.of(context).textTheme.titleMedium,
+            GestureDetector(
+              onTap: () {
+                context.read<AutoScroll>().scrollTo(screenHeight * 0.8);
+              },
+              child: Text(
+                'About Us',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
             ),
             const SizedBox(width: 15),
-            Text(
-              'Pricing',
-              style: Theme.of(context).textTheme.titleMedium,
+            GestureDetector(
+              onTap: () {
+                context.read<AutoScroll>().scrollTo((screenHeight * 0.8) * 2);
+              },
+              child: Text(
+                'Contact',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
             ),
             const SizedBox(width: 15),
-            // MaterialButton(
-            //   onPressed: () {},
-            //   shape: const RoundedRectangleBorder(
-            //     borderRadius: BorderRadius.all(Radius.circular(20)),
-            //   ),
-            //   child: Padding(
-            //     padding: const EdgeInsets.all(8.0),
-            //     child: Text(
-            //       'Contact Us',
-            //       style: Theme.of(context).textTheme.labelMedium,
-            //     ),
-            //   ),
-            //   color: Colors.white,
-            // ),
-            // const SizedBox(width: 15),
           ],
         ),
       ],
