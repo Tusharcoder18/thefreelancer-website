@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../auto_scroll.dart';
 
@@ -68,10 +69,14 @@ class IntroMobile extends StatelessWidget {
                   height: 20,
                 ),
                 MaterialButton(
-                  onPressed: () {
-                    context
-                        .read<AutoScroll>()
-                        .scrollTo((screenHeight * 0.875) * 2);
+                  onPressed: () async {
+                    // context
+                    //     .read<AutoScroll>()
+                    //     .scrollTo((screenHeight * 0.875) * 2);
+                    var _url = "https://96umhjfmrv5.typeform.com/to/eXAqppuD";
+                    await canLaunch(_url)
+                        ? await launch(_url)
+                        : throw 'Could not launch $_url';
                   },
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(30)),
@@ -125,8 +130,12 @@ Widget introBodyText(BuildContext context, double width, double height) {
         height: 20,
       ),
       MaterialButton(
-        onPressed: () {
-          context.read<AutoScroll>().scrollTo((screenHeight * 0.875) * 2);
+        onPressed: () async {
+          // context.read<AutoScroll>().scrollTo((screenHeight * 0.875) * 2);
+          var _url = "https://96umhjfmrv5.typeform.com/to/eXAqppuD";
+          await canLaunch(_url)
+              ? await launch(_url)
+              : throw 'Could not launch $_url';
         },
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(30)),

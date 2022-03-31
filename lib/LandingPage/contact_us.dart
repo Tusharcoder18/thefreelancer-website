@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/shims/dart_ui.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactUs extends StatelessWidget {
   const ContactUs({Key? key}) : super(key: key);
+  final html = '''
+      <a data-tf-popup="eXAqppuD" data-tf-iframe-props="title=Contact Us Form" data-tf-medium="snippet" style="all:unset;font-family:Helvetica,Arial,sans-serif;display:inline-block;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background-color:#0445AF;color:#FFFFFF;font-size:20px;border-radius:50px;padding:0 33px;font-weight:bold;height:100px;cursor:pointer;line-height:50px;text-align:center;margin:0;text-decoration:none;">
+      Get In Touch
+      </a>
+      <script src="//embed.typeform.com/next/embed.js"></script>
+      ''';
+  final htmlData = '''
+      <a href="" data-tf-popup="eXAqppuD" data-tf-iframe-props="title=Contact Us Form" data-tf-medium="snippet">
+      Hello
+      </a>
+      <script src="//embed.typeform.com/next/embed.js"></script>
+      ''';
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +30,18 @@ class ContactUs extends StatelessWidget {
           SizedBox(
             width: screenWidth * 0.1,
           ),
-          const Expanded(
-            child: ContactUsForm(),
-          ),
+          Expanded(
+              child: Center(
+            child: ElevatedButton(
+              child: const Text("Click me!"),
+              onPressed: () async {
+                var _url = "https://96umhjfmrv5.typeform.com/to/eXAqppuD";
+                await canLaunch(_url)
+                    ? await launch(_url)
+                    : throw 'Could not launch $_url';
+              },
+            ),
+          )),
           Expanded(
             child: Image.asset(
               'assets/images/contactus.png',

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:freelanceapp/LandingPage/about_us.dart';
 import 'package:freelanceapp/LandingPage/contact_us.dart';
 import 'package:freelanceapp/LandingPage/intro.dart';
+import 'package:freelanceapp/LandingPage/templates.dart';
 import 'package:freelanceapp/auto_scroll.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +23,7 @@ class LandingPageBody extends StatelessWidget {
           child: ListView(
             controller: context.read<AutoScroll>().scrollController,
             shrinkWrap: true,
-            children: const [Intro(), AboutUs(), ContactUs(), Footer()],
+            children: const [Intro(), AboutUs(), Templates(), Footer()],
           ),
         );
       } else {

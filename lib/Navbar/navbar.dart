@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freelanceapp/auto_scroll.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({Key? key}) : super(key: key);
@@ -78,8 +79,12 @@ class DesktopNavbar extends StatelessWidget {
             ),
             const SizedBox(width: 30),
             MaterialButton(
-              onPressed: () {
-                context.read<AutoScroll>().scrollTo((screenHeight * 0.875) * 2);
+              onPressed: () async {
+                // context.read<AutoScroll>().scrollTo((screenHeight * 0.875) * 2);
+                var _url = "https://96umhjfmrv5.typeform.com/to/eXAqppuD";
+                await canLaunch(_url)
+                    ? await launch(_url)
+                    : throw 'Could not launch $_url';
               },
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
